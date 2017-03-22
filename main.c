@@ -1,15 +1,24 @@
-#include <Windows.h>
+// ======================================== //
+// Setting                                  //
+// ======================================== //
 
-#define __EXE_PATH "notepad.exe"
+// Set exe path.
+#define EXE_PATH "notepad.exe"
+
+// ======================================== //
+// Program                                  //
+// ======================================== //
+
+#include <Windows.h>
 
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow )
 {
-	WCHAR EXE_PATH[] = TEXT( __EXE_PATH );
+	WCHAR exe[] = TEXT( EXE_PATH );
 	PROCESS_INFORMATION pi = { 0 };
 	STARTUPINFO si = { 0 };
-	si.cb = sizeof(STARTUPINFO);
+	si.cb = sizeof( STARTUPINFO );
 
-	int a = CreateProcess( NULL, EXE_PATH, NULL, NULL, FALSE, NORMAL_PRIORITY_CLASS, NULL, NULL, &si, &pi );
+	CreateProcess( NULL, exe, NULL, NULL, FALSE, NORMAL_PRIORITY_CLASS, NULL, NULL, &si, &pi );
 
 	return 0;
 }
